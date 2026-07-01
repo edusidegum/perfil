@@ -1,0 +1,128 @@
+Departamento de Tecnologia e Nutrição Clínica
+
+IMPLEMENTAÇÃO DO PROTOCOLO DE NUTRIÇÃO PERSONALIZADO
+
+Guia Técnico de Arquitetura, Desenvolvimento e Deployment
+
+01 de julho de 2026
+
+---
+
+### 1. Resumo Executivo
+
+Este documento detalha as especificações técnicas para a implementação do Protocolo de Nutrição Personalizado, uma aplicação web de alta performance projetada para converter dados antropométricos e preferências alimentares em planos nutricionais dinâmicos. O objetivo principal é fornecer uma ferramenta escalável que automatize a geração de recomendações em formato PDF, garantindo uma experiência de usuário fluida e segura.
+
+O escopo abrange desde a estruturação do front-end até a lógica de processamento de dados via JSON. Um pilar fundamental deste projeto é a Conformidade com a LGPD (Lei Geral de Proteção de Dados), assegurando que informações sensíveis de saúde sejam processadas com o máximo rigor de privacidade, priorizando o processamento client-side para mitigar riscos de vazamento em trânsito.
+
+### 2. Arquitetura Técnica
+
+A solução foi concebida utilizando uma arquitetura Serverless-ready, focada em tecnologias web modernas para garantir compatibilidade entre dispositivos e baixa latência.
+
+*   **HTML5 & CSS3:** Estruturação semântica para acessibilidade e estilização responsiva via Flexbox/Grid.
+*   **JavaScript (ES6+):** Motor lógico responsável pelo cálculo de macronutrientes e manipulação do DOM.
+*   **JSON (JavaScript Object Notation):** Utilizado como banco de dados estático para o catálogo de produtos e tabelas nutricionais.
+*   **jsPDF Library:** Biblioteca principal para a renderização e exportação do protocolo em formato PDF diretamente no navegador do usuário.
+
+### 3. Estrutura de Pastas
+
+A organização do diretório segue as melhores práticas de desenvolvimento para facilitar a manutenção e o deployment em ambientes de produção.
+
+
+
+/root
+├── protocolo.html
+├── /perfil
+│   ├── /img (Logotipos, ícones e imagens .webp)
+│   └── /assets
+│       ├── /js (Scripts de lógica e bibliotecas)
+│       └── /css (Folhas de estilo e fontes)
+
+
+
+### 4. Descrição de Cada Arquivo
+
+
+
+
+Arquivo
+Função Principal
+Dependências
+
+
+
+
+protocolo.html
+Interface de entrada e formulário de coleta de dados.
+styles.css, analise.js
+
+
+analise.js
+Cálculos metabólicos (TMB, GCD) e lógica de geração de PDF.
+jsPDF, produtos.json
+
+
+produtos.json
+Base de dados de suplementos e alimentos permitidos.
+N/A
+
+
+styles.css
+Definições visuais, tipografia e responsividade mobile.
+Google Fonts
+
+
+
+
+### 5. Instruções de Deployment
+
+Para garantir a disponibilidade e performance, o deployment deve seguir as diretrizes abaixo:
+
+1.  **Hospedagem:** Utilizar **GitHub Pages** ou Vercel para hospedagem estática, aproveitando a integração contínua (CI/CD).
+2.  **Caminhos Relativos:** Todos os links internos no código devem utilizar caminhos relativos (ex: `./perfil/assets/js/analise.js`) para evitar erros de carregamento em subdiretórios.
+3.  **CDN jsPDF:** Recomenda-se o uso de CDN (Content Delivery Network) para a biblioteca jsPDF para reduzir o tamanho do pacote inicial:
+    *   ``
+
+### 6. Validação e Testes
+
+Antes de cada release, a aplicação deve passar pelo seguinte checklist de funcionalidades:
+
+*   [ ] **Cálculo de Macronutrientes:** Validar se a soma de Proteínas, Carboidratos e Gorduras corresponde ao Valor Energético Total (VET).
+*   [ ] **Responsividade:** Testar o formulário em resoluções de 360px (mobile) a 1920px (desktop).
+*   [ ] **Exportação PDF:** Verificar se o arquivo gerado mantém a formatação e se todos os campos preenchidos constam no documento.
+*   [ ] **Cross-browser:** Validar funcionamento no Chrome, Safari e Firefox.
+
+### 7. Conformidade LGPD
+
+A segurança dos dados do paciente é prioridade absoluta. O sistema implementa as seguintes medidas:
+
+*   **Data Minimization:** Coleta apenas os dados estritamente necessários para o cálculo nutricional.
+*   **Processamento Client-Side:** Os cálculos e a geração do PDF ocorrem no navegador do usuário. Nenhum dado sensível de saúde é armazenado em servidores externos nesta fase.
+*   **Consentimento:** Inclusão de checkbox obrigatório de aceite dos termos de uso e política de privacidade antes do processamento dos dados.
+
+### 8. SEO e Core Web Vitals
+
+Para garantir visibilidade e uma experiência de usuário de alta qualidade (LCP, FID, CLS), aplicam-se as seguintes otimizações:
+
+*   **Imagens:** Uso obrigatório do formato **.webp** para redução de peso sem perda de qualidade.
+*   **Meta Tags:** Inclusão de `meta description` e `Open Graph` tags para compartilhamento em redes sociais.
+*   **Performance:** Minificação de arquivos JS e CSS e utilização de `defer` no carregamento de scripts não críticos.
+
+### 9. Próximas Fases
+
+O roadmap de evolução do sistema prevê as seguintes implementações para o próximo semestre:
+
+1.  **Integração com Banco de Dados:** Migração do JSON estático para uma API RESTful com PostgreSQL para histórico de pacientes.
+2.  **Automação de E-mail:** Envio automático do protocolo gerado para o e-mail do paciente via SendGrid ou AWS SES.
+3.  **Dashboard de Resultados:** Painel administrativo para o nutricionista acompanhar a evolução das métricas dos usuários.
+
+### 10. Contato e Suporte
+
+Para suporte técnico, dúvidas sobre a implementação ou solicitações de novas funcionalidades, entre em contato com a equipe de desenvolvimento:
+
+*   **E-mail:** suporte.tecnico@nutriprotocolo.com.br
+*   **Slack:** #dev-nutri-projeto
+*   **Repositório:** github.com/organizacao/protocolo-nutricao
+
+---
+
+Documento elaborado em 01 de julho de 2026. As informações contidas são de responsabilidade do solicitante.
