@@ -1,0 +1,130 @@
+[
+  {
+    "objetivo": "emagrecimento",
+    "atividade": "leve",
+    "nome": "Shake Herbalife F1",
+    "preco": 159.90,
+    "pontos": 30,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "emagrecimento",
+    "atividade": "moderada",
+    "nome": "Chá Concentrado",
+    "preco": 89.90,
+    "pontos": 50,
+    "porcoesDia": 3
+  },
+  {
+    "objetivo": "emagrecimento",
+    "atividade": "intensa",
+    "nome": "Thermojetics",
+    "preco": 129.90,
+    "pontos": 60,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "energia",
+    "atividade": "leve",
+    "nome": "Hype Drink",
+    "preco": 119.90,
+    "pontos": 20,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "energia",
+    "atividade": "moderada",
+    "nome": "Fiber Powder",
+    "preco": 99.90,
+    "pontos": 40,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "energia",
+    "atividade": "intensa",
+    "nome": "Proteína em Pó",
+    "preco": 139.90,
+    "pontos": 25,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "performance",
+    "atividade": "leve",
+    "nome": "BCAA",
+    "preco": 79.90,
+    "pontos": 30,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "performance",
+    "atividade": "moderada",
+    "nome": "Creatina",
+    "preco": 89.90,
+    "pontos": 30,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "performance",
+    "atividade": "intensa",
+    "nome": "Whey Protein",
+    "preco": 169.90,
+    "pontos": 20,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "imunidade",
+    "atividade": "leve",
+    "nome": "Multivitamínico",
+    "preco": 74.90,
+    "pontos": 60,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "imunidade",
+    "atividade": "moderada",
+    "nome": "Herbalifeline",
+    "preco": 84.90,
+    "pontos": 30,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "imunidade",
+    "atividade": "intensa",
+    "nome": "Beauty Booster",
+    "preco": 109.90,
+    "pontos": 45,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "emagrecimento",
+    "atividade": "leve",
+    "nome": "Aloe Vera",
+    "preco": 69.90,
+    "pontos": 60,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "emagrecimento",
+    "atividade": "moderada",
+    "nome": "Shape Control",
+    "preco": 114.90,
+    "pontos": 30,
+    "porcoesDia": 2
+  },
+  {
+    "objetivo": "performance",
+    "atividade": "moderada",
+    "nome": "Barras Protéicas",
+    "preco": 49.90,
+    "pontos": 12,
+    "porcoesDia": 1
+  },
+  {
+    "objetivo": "energia",
+    "atividade": "leve",
+    "nome": "Chá Concentrado",
+    "preco": 89.90,
+    "pontos": 50,
+    "porcoesDia": 3
+  }
+]
