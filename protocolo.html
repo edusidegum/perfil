@@ -3,239 +3,297 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocolo de Recomendação | Distribuidor Independente Herbalife</title>
+  <meta name="description" content="Preencha o formulário e receba seu protocolo personalizado de suplementação e nutrição Herbalife.">
+  <meta property="og:title" content="Protocolo de Recomendação | Distribuidor Independente Herbalife">
+  <meta property="og:description" content="Descubra o plano ideal para seus objetivos: emagrecimento, energia, performance ou imunidade.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="analise.js" defer></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- Scripts compartilhados (defer = não bloqueante) -->
-  <script src="assets/js/bloco-incluir.js" defer></script>
-  <script src="assets/js/bloco-protecao.js" defer></script>
-  <script src="assets/js/analise.js" defer></script>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 0 12px;
+    }
 
-  <!-- Título e Meta Tags SEO -->
-  <title>Protocolo de Nutrição Personalizado | Distribuidor Independente Herbalife</title>
-  <meta name="description" content="Receba um protocolo nutricional personalizado e gratuito elaborado por Edu Sidegum, Distribuidor Independente Herbalife em Novo Hamburgo/RS. Comece sua transformação hoje!">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Protocolo de Nutrição Personalizado | Distribuidor Independente Herbalife">
-  <meta property="og:description" content="Seu protocolo individual com orientações práticas para emagrecimento, performance e bem-estar. Atendimento consultivo em Novo Hamburgo/RS.">
-  <meta property="og:image" content="https://edusidegum.github.io/assets/img/protocolo-hero.webp">
-  <meta property="og:url" content="https://edusidegum.github.io/protocolo/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
+    header {
+      background: #007A33;
+      color: #fff;
+      padding: 24px 16px;
+      text-align: center;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 24px;
+    }
 
-  <!-- SEO Local -->
-  <meta name="geo.region" content="BR-RS">
-  <meta name="geo.placename" content="Novo Hamburgo">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="protecao-copia" content="ativado">
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://edusidegum.github.io/protocolo/">
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
 
-  <!-- CSS compartilhado -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-  <!-- Google Fonts (carregamento assíncrono) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
+    article {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
 
-  <!-- Schema JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://edusidegum.github.io/#person",
-        "name": "Edu Sidegum",
-        "jobTitle": "Distribuidor Independente Herbalife",
-        "url": "https://edusidegum.github.io/",
-        "sameAs": ["https://wa.me/5551999663200"]
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://edusidegum.github.io/#business",
-        "name": "Edu Sidegum — Consultoria Herbalife",
-        "description": "Consultoria nutricional e distribuição de produtos Herbalife em Novo Hamburgo/RS",
-        "url": "https://edusidegum.github.io/",
-        "telephone": "+5551999663200",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Novo Hamburgo",
-          "addressRegion": "RS",
-          "addressCountry": "BR"
-        },
-        "areaServed": ["BR"],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+5551999663200",
-          "contactType": "customer service",
-          "availableLanguage": ["Portuguese"]
-        },
-        "founder": { "@id": "https://edusidegum.github.io/#person" }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://edusidegum.github.io/#website",
-        "url": "https://edusidegum.github.io/",
-        "name": "Ecossistema Edu Sidegum — Herbalife",
-        "publisher": { "@id": "https://edusidegum.github.io/#person" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://edusidegum.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Protocolo Personalizado",
-            "item": "https://edusidegum.github.io/protocolo/"
-          }
-        ]
+    #msgErro {
+      display: none;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #007A33;
+      box-shadow: 0 0 0 3px rgba(0, 122, 51, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      transform: scale(1.1);
+    }
+
+    button[type="submit"] {
+      background: #007A33;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    button[type="submit"]:hover {
+      background: #005c26;
+    }
+
+    button[type="submit"]:focus-visible {
+      outline: 3px solid #85d7a7;
+      outline-offset: 2px;
+    }
+
+    .how-it-works {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #eee;
+    }
+
+    .how-it-works h2 {
+      font-size: 1.4rem;
+      color: #007A33;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps li {
+      background: #f0fdf4;
+      padding: 20px 16px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #bbf7d0;
+    }
+
+    .steps li strong {
+      display: block;
+      font-size: 2rem;
+      color: #007A33;
+      margin-bottom: 6px;
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 16px;
+      background: #fffbe6;
+      border-left: 4px solid #facc15;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .notice em {
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 24px 16px;
+      background: #1a1a1a;
+      color: #ccc;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #78BE20;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .links {
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+      article {
+        padding: 24px 16px;
       }
-    ]
-  }
-  </script>
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header / Topbar fixa -->
-  <header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
-    <a href="/" aria-label="Página inicial" class="topbar-brand">
-      <img src="assets/img/logo-edusidegum.webp" alt="Edu Sidegum — Distribuidor Independente Herbalife"
-           class="topbar-logo" width="128" height="128" loading="eager" fetchpriority="high">
-    </a>
-    <nav class="menu-toggle" aria-label="Menu principal">
-      <button class="menu-btn" aria-label="Abrir menu">☰ Menu</button>
-      <ul class="menu-dropdown">
-        <li><a href="/">Home</a></li>
-        <li><a href="/manifesto.html">Manifesto</a></li>
-        <li><a href="https://catalogoherbalife.com.br/edusidegum" target="_blank" rel="noopener">Catálogo</a></li>
-        <li><a href="https://edusidegum.github.io/cadastro/cadastro.html" target="_blank" rel="noopener">Cliente Premium</a></li>
-        <li><a href="https://edusidegum.github.io/cadastro/cadastro.html" target="_blank" rel="noopener">Novo Consultor</a></li>
-      </ul>
-    </nav>
-    <a href="https://wa.me/5551999663200?text=Olá,%20quero%20meu%20protocolo%20personalizado!" class="btn-cta"
-       target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-      💬 WhatsApp
-    </a>
+  <header>
+    <h1>Protocolo de Recomendação</h1>
+    <p>Preencha o formulário para receber seu plano personalizado</p>
   </header>
-  <div class="header-spacer"></div>
 
-  <!-- Conteúdo principal -->
   <main>
-    <article aria-labelledby="hero-heading">
-      <!-- Hero Section -->
-      <section class="hero" aria-label="Chamada principal">
-        <div class="container">
-          <h1 id="hero-heading">Protocolo de Nutrição Personalizado</h1>
-          <p class="subtitle">Desenvolvido por Edu Sidegum, Distribuidor Independente Herbalife em Novo Hamburgo/RS</p>
-          <a href="https://wa.me/5551999663200?text=Quero%20meu%20protocolo%20personalizado!" class="cta-button"
-             target="_blank" rel="noopener">
-            🚀 Receba seu protocolo gratuito
-          </a>
+    <article>
+      <div id="msgErro" role="alert"></div>
+
+      <form id="formRecomendacao" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
         </div>
+
+        <div class="form-group">
+          <label for="idade">Idade</label>
+          <input type="number" id="idade" name="idade" min="18" required placeholder="Ex: 30">
+        </div>
+
+        <div class="form-group">
+          <label for="objetivo">Objetivo principal</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="" disabled selected>Selecione...</option>
+            <option value="emagrecimento">Emagrecimento</option>
+            <option value="energia">Energia</option>
+            <option value="performance">Performance</option>
+            <option value="imunidade">Imunidade</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="atividade">Nível de atividade física</label>
+          <select id="atividade" name="atividade" required>
+            <option value="" disabled selected>Selecione...</option>
+            <option value="leve">Leve (até 2x/semana)</option>
+            <option value="moderada">Moderada (3 a 4x/semana)</option>
+            <option value="intensa">Intensa (5x ou mais/semana)</option>
+          </select>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="consentimento" name="consentimento" required>
+          <label for="consentimento">Concordo com o uso dos meus dados conforme a Lei Geral de Proteção de Dados (LGPD).</label>
+        </div>
+
+        <button type="submit">Gerar Meu Protocolo (PDF)</button>
+      </form>
+
+      <section class="how-it-works">
+        <h2>Como Funciona</h2>
+        <ol class="steps">
+          <li>
+            <strong>1</strong>
+            <span>Preencha seus dados e objetivos</span>
+          </li>
+          <li>
+            <strong>2</strong>
+            <span>Nosso sistema gera seu protocolo personalizado</span>
+          </li>
+          <li>
+            <strong>3</strong>
+            <span>Receba o PDF e entre em contato para orientações</span>
+          </li>
+        </ol>
       </section>
 
-      <!-- Seção: Como Funciona -->
-      <section class="how-it-works" aria-labelledby="how-heading">
-        <div class="container">
-          <h2 id="how-heading">Como Funciona</h2>
-          <div class="steps-grid">
-            <div class="step-card">
-              <span class="step-number" aria-hidden="true">1</span>
-              <h3>Preencha seu Perfil</h3>
-              <p>Responda algumas perguntas sobre seus objetivos, rotina e preferências. É rápido e seguro.</p>
-            </div>
-            <div class="step-card">
-              <span class="step-number" aria-hidden="true">2</span>
-              <h3>Análise Nutricional</h3>
-              <p>Com base nas suas respostas, o sistema calcula seu metabolismo basal e monta um plano alinhado ao seu estilo de vida.</p>
-            </div>
-            <div class="step-card">
-              <span class="step-number" aria-hidden="true">3</span>
-              <h3>Baixe seu Protocolo</h3>
-              <p>Você recebe um PDF completo com orientações de suplementação, cardápios sugeridos e dicas práticas.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Seção: Gerar Protocolo -->
-      <section class="generate-section" aria-labelledby="generate-heading">
-        <div class="container">
-          <h2 id="generate-heading">Obtenha seu Protocolo Agora</h2>
-          <p>Após responder às perguntas, nosso sistema personaliza um guia completo para você. Antes de gerar, aceite os termos de consentimento.</p>
-          
-          <form id="lgpd-form" onsubmit="return false;">
-            <div class="consent-group">
-              <input type="checkbox" id="consent-lgpd" name="consent" required>
-              <label for="consent-lgpd">Declaro que li e concordo com a <a href="doc/politicadeprivacidade.html" target="_blank">Política de Privacidade</a> e autorizo o tratamento dos meus dados conforme a LGPD.</label>
-            </div>
-            <button type="button" id="btn-gerar-pdf" class="generate-btn" onclick="aoGerarRecomendacao()">
-              📄 Gerar Meu Protocolo (PDF)
-            </button>
-          </form>
-        </div>
-      </section>
+      <div class="notice">
+        <em>Este questionário possui finalidade exclusivamente informativa. Não substitui consulta com profissionais de saúde.</em>
+      </div>
     </article>
   </main>
 
-  <!-- Footer padrão do ecossistema -->
-  <footer role="contentinfo">
-    <p><strong>Distribuidor Independente Herbalife: Edu Sidegum</strong></p>
-    <p>Novo Hamburgo/RS — Brasil</p>
-
-    <p>
-      <a href="https://catalogoherbalife.com.br/edusidegum"
-         target="_blank" rel="noopener"
-         class="footer-link-catalogo">
-        📖 Acesse meu Catálogo Oficial de Produtos
-      </a>
-    </p>
-
-    <p>
-      <a href="https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305"
-         target="_blank" rel="noopener" class="footer-link">
-        📝 Cadastre-se
-      </a>
-      <span>|</span>
-      <a href="https://wa.me/5551999663200" target="_blank" rel="noopener" class="footer-link">
-        💬 WhatsApp: (51) 99966-3200
-      </a>
-    </p>
-
-    <!-- Disclaimer oficial (NÃO ALTERAR) -->
-    <div class="disclaimer">
-      <p>
-        <strong>DISCLAIMER:</strong> Os resultados apresentados variam de pessoa para pessoa,
-        dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas.
-        Os produtos Herbalife são suplementos alimentares e não medicamentos.
-        Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional.
-        <strong>Edu Sidegum</strong> — Distribuidor Independente Herbalife.
-        Imagens meramente ilustrativas.
-      </p>
+  <footer>
+    <div class="links">
+      <a href="https://wa.me/5551999663200" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://catalogoherbalife.com.br/edusidegum" target="_blank" rel="noopener">Catálogo</a>
+      <a href="https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305" target="_blank" rel="noopener">Cadastro</a>
     </div>
-
-    <!-- Links institucionais -->
-    <div>
-      <a href="/doc/politicadeprivacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
-      <span>|</span>
-      <a href="/doc/termosdeusodistribuidorindependenteherbalife.html" target="_blank" rel="noopener">Termos de Uso</a>
-      <span>|</span>
-      <a href="/">Página Inicial</a>
-    </div>
-
-    <p>© 2026 Edu Sidegum — Distribuidor Independente Herbalife. Todos os direitos reservados.</p>
+    <p>© 2026 Distribuidor Independente Herbalife — Edu Sidegum</p>
   </footer>
-
-  <!-- Espaço para injeção do banner de cookies (via bloco-incluir.js) -->
-  <div id="cookie-banner-container" aria-live="polite"></div>
-
 </body>
 </html>
