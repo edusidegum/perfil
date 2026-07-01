@@ -1,0 +1,286 @@
+/**
+ * analise.js
+ * Sistema de Recomendação Inteligente de Produtos Herbalife
+ * com validação de idade, matching de objetivos, geração de PDF
+ * com tabela de investimento e próximos passos.
+ * Autor: Edu Sidegum – Distribuidor Independente Herbalife
+ */
+
+// ===================== DADOS DOS PRODUTOS =====================
+// Cada produto possui nome, descrição, preço por porção (R$),
+// porções diárias recomendadas, e os públicos-alvo por objetivo e atividade.
+const produtos = [
+  {
+    id: 'shake',
+    nome: 'Shake Herbalife (Fórmula 1)',
+    descricao: 'Substituto de refeição balanceado com proteínas, vitaminas e minerais.',
+    precoPorPorcao: 8.50,       // preço médio por porção
+    porcoesPorDia: 2,           // recomendação padrão
+    objetivo: ['controle de peso', 'energia', 'performance'],
+    atividade: ['sedentario', 'moderado', 'intenso']
+  },
+  {
+    id: 'cha',
+    nome: 'Chá Concentrado de Ervas',
+    descricao: 'Acelera o metabolismo e auxilia na hidratação.',
+    precoPorPorcao: 3.20,
+    porcoesPorDia: 1,
+    objetivo: ['controle de peso', 'energia'],
+    atividade: ['sedentario', 'moderado']
+  },
+  {
+    id: 'protein',
+    nome: 'Protein Drink',
+    descricao: 'Bebida proteica para recuperação muscular.',
+    precoPorPorcao: 12.00,
+    porcoesPorDia: 1,
+    objetivo: ['performance', 'energia'],
+    atividade: ['moderado', 'intenso']
+  },
+  {
+    id: 'hype',
+    nome: 'Hype Drink',
+    descricao: 'Foco, energia e queima calórica inteligente.',
+    precoPorPorcao: 9.90,
+    porcoesPorDia: 1,
+    objetivo: ['energia', 'performance'],
+    atividade: ['intenso', 'moderado']
+  },
+  {
+    id: 'multivitaminico',
+    nome: 'Multivitamínico Herbalife',
+    descricao: 'Suporte diário de vitaminas e minerais essenciais.',
+    precoPorPorcao: 4.50,
+    porcoesPorDia: 1,
+    objetivo: ['controle de peso', 'energia', 'performance'],
+    atividade: ['sedentario', 'moderado', 'intenso']
+  }
+];
+
+// ===================== PRODUTOS BASE (SEMPRE RECOMENDADOS) =====================
+const idsProdutosBase = ['multivitaminico']; // Sempre incluso independente do perfil
+
+// ===================== FUNÇÃO DE RECOMENDAÇÃO =====================
+/**
+ * Recomenda produtos com base no perfil do usuário.
+ * @param {string} objetivo - "controle de peso", "energia" ou "performance"
+ * @param {string} atividade - "sedentario", "moderado" ou "intenso"
+ * @returns {{base: Array, complementares: Array, todos: Array}}
+ */
+function recomendarProdutos(objetivo, atividade) {
+  // 1. Produtos base (fixos)
+  const base = produtos.filter(p => idsProdutosBase.includes(p.id));
+
+  // 2. Produtos complementares (filtrados por objetivo E atividade)
+  const complementares = produtos.filter(p => {
+    const matchObjetivo = p.objetivo.includes(objetivo);
+    const matchAtividade = p.atividade.includes(atividade);
+    // Exclui produtos que já estão na base para não duplicar
+    return matchObjetivo && matchAtividade && !idsProdutosBase.includes(p.id);
+  });
+
+  return {
+    base,
+    complementares,
+    todos: [...base, ...complementares]
+  };
+}
+
+// ===================== CÁLCULO DE INVESTIMENTO MENSAL =====================
+/**
+ * Calcula o investimento mensal de um produto.
+ * @param {object} produto
+ * @returns {number} custo mensal (porções/dia * preço/porção * 30)
+ */
+function calcularInvestimentoMensal(produto) {
+  return produto.porcoesPorDia * produto.precoPorPorcao * 30;
+}
+
+/**
+ * Retorna o total mensal de uma lista de produtos.
+ * @param {Array} listaProdutos
+ * @returns {number}
+ */
+function calcularTotalMensal(listaProdutos) {
+  return listaProdutos.reduce((total, p) => total + calcularInvestimentoMensal(p), 0);
+}
+
+// ===================== GERAÇÃO DO PDF =====================
+/**
+ * Gera e faz download do PDF com tabela de produtos, investimento e próximos passos.
+ * @param {object} recomendacao - resultado de recomendarProdutos()
+ */
+function gerarPDF(recomendacao) {
+  // Verifica se jsPDF está disponível
+  if (typeof window.jspdf === 'undefined' || typeof window.jspdf.jsPDF === 'undefined') {
+    alert('Erro: biblioteca jsPDF não carregada. O PDF não pode ser gerado.');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const marginLeft = 10;
+  let y = 20;
+
+  // Título
+  doc.setFontSize(18);
+  doc.setTextColor(0, 0, 0);
+  doc.text('Sua Recomendação Personalizada', marginLeft, y);
+  y += 10;
+
+  // Subtítulo
+  doc.setFontSize(12);
+  doc.text('Consultor: Edu Sidegum – Distribuidor Independente Herbalife', marginLeft, y);
+  y += 10;
+
+  // Tabela de Produtos
+  doc.setFontSize(11);
+  doc.text('Produtos Recomendados', marginLeft, y);
+  y += 6;
+
+  // Cabeçalho da tabela
+  const colunas = ['Produto', 'Porções/Dia', 'Preço/Porção (R$)', 'Invest. Mensal (R$)'];
+  const larguras = [80, 25, 35, 35];
+  let x = marginLeft;
+
+  doc.setFillColor(220, 220, 220);
+  doc.rect(x, y, larguras.reduce((a, b) => a + b), 8, 'F');
+  doc.setFont(undefined, 'bold');
+  colunas.forEach((col, i) => {
+    doc.text(col, x + 2, y + 6);
+    x += larguras[i];
+  });
+  y += 10;
+
+  // Linhas da tabela
+  doc.setFont(undefined, 'normal');
+  const todosProdutos = recomendacao.todos;
+  todosProdutos.forEach(produto => {
+    x = marginLeft;
+    const investimento = calcularInvestimentoMensal(produto);
+    const dados = [
+      produto.nome,
+      produto.porcoesPorDia.toString(),
+      produto.precoPorPorcao.toFixed(2),
+      investimento.toFixed(2)
+    ];
+    dados.forEach((dado, i) => {
+      doc.text(dado, x + 2, y + 5);
+      x += larguras[i];
+    });
+    y += 8;
+  });
+
+  // Linha de total
+  y += 2;
+  x = marginLeft;
+  doc.setFillColor(240, 240, 240);
+  doc.rect(x, y, larguras.reduce((a, b) => a + b), 8, 'F');
+  doc.setFont(undefined, 'bold');
+  const totalMensal = calcularTotalMensal(todosProdutos);
+  doc.text('TOTAL', x + 2, y + 6);
+  doc.text(`R$ ${totalMensal.toFixed(2)}`, x + larguras[0] + larguras[1] + larguras[2] + 2, y + 6);
+  y += 12;
+
+  // Seção Próximos Passos
+  doc.setFontSize(13);
+  doc.setFont(undefined, 'bold');
+  doc.text('Próximos Passos', marginLeft, y);
+  y += 8;
+
+  doc.setFontSize(11);
+  doc.setFont(undefined, 'normal');
+  const passos = [
+    '1. Entre em contato via WhatsApp para esclarecer dúvidas.',
+    '2. Agende sua consultoria gratuita de 30 minutos.',
+    '3. Acesse o catálogo oficial e adquira seus produtos.',
+    '4. Inicie o protocolo com orientação personalizada.',
+    '5. Acompanhe seus resultados com nosso suporte contínuo.'
+  ];
+  passos.forEach(passo => {
+    doc.text(passo, marginLeft + 5, y);
+    y += 7;
+  });
+
+  // Rodapé
+  y += 5;
+  doc.setFontSize(9);
+  doc.setTextColor(100, 100, 100);
+  doc.text('Edu Sidegum – Distribuidor Independente Herbalife | Novo Hamburgo/RS', marginLeft, y);
+  doc.text('Os resultados podem variar de pessoa para pessoa. Consulte um médico.', marginLeft, y + 5);
+
+  // Salva o PDF
+  doc.save('recomendacao-herbalife.pdf');
+}
+
+// ===================== VALIDAÇÃO DE IDADE =====================
+/**
+ * Verifica se a idade é >= 18.
+ * @param {number} idade
+ * @returns {boolean}
+ */
+function validarIdade(idade) {
+  if (isNaN(idade) || idade < 0) {
+    alert('Idade inválida.');
+    return false;
+  }
+  if (idade < 18) {
+    alert('É necessário ter pelo menos 18 anos para prosseguir.');
+    return false;
+  }
+  return true;
+}
+
+// ===================== FUNÇÃO PRINCIPAL (EVENTO) =====================
+/**
+ * Manipulador do botão de recomendação.
+ */
+function aoGerarRecomendacao() {
+  // Obter valores do formulário (IDs de exemplo)
+  const objetivoEl = document.getElementById('objetivo');
+  const atividadeEl = document.getElementById('atividade');
+  const idadeEl = document.getElementById('idade');
+
+  if (!objetivoEl || !atividadeEl || !idadeEl) {
+    alert('Campos do formulário não encontrados.');
+    return;
+  }
+
+  const idade = parseInt(idadeEl.value, 10);
+  if (!validarIdade(idade)) return;
+
+  const objetivo = objetivoEl.value;
+  const atividade = atividadeEl.value;
+
+  // Validação simples de objetivo/atividade (pode ser aprimorada)
+  if (!['controle de peso', 'energia', 'performance'].includes(objetivo)) {
+    alert('Objetivo inválido.');
+    return;
+  }
+  if (!['sedentario', 'moderado', 'intenso'].includes(atividade)) {
+    alert('Nível de atividade inválido.');
+    return;
+  }
+
+  // Obter recomendação
+  const recomendacao = recomendarProdutos(objetivo, atividade);
+
+  if (recomendacao.todos.length === 0) {
+    alert('Nenhum produto encontrado para o perfil informado.');
+    return;
+  }
+
+  // Gerar PDF
+  gerarPDF(recomendacao);
+}
+
+// ===================== INICIALIZAÇÃO =====================
+// Adiciona o listener quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('btn-gerar-pdf');
+  if (btn) {
+    btn.addEventListener('click', aoGerarRecomendacao);
+  } else {
+    console.warn('Botão btn-gerar-pdf não encontrado.');
+  }
+});

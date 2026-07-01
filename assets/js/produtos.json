@@ -1,0 +1,60 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Shake Herbalife",
+      "valor_porcao": 9.90,
+      "categoria": "Substituto",
+      "imagem": "shake-herbalife.webp"
+    },
+    {
+      "id": 2,
+      "nome": "Protein Drink Mix",
+      "valor_porcao": 12.50,
+      "categoria": "Complemento",
+      "imagem": "protein-drink-mix.webp"
+    },
+    {
+      "id": 3,
+      "nome": "Chá Concentrado",
+      "valor_porcao": 8.00,
+      "categoria": "Energético",
+      "imagem": "cha-concentrado.webp"
+    },
+    {
+      "id": 4,
+      "nome": "Barras Protéicas",
+      "valor_porcao": 6.50,
+      "categoria": "Complemento",
+      "imagem": "barras-proteicas.webp"
+    },
+    {
+      "id": 5,
+      "nome": "Multivitamínico",
+      "valor_porcao": 7.20,
+      "categoria": "Complemento",
+      "imagem": "multivitaminico.webp"
+    },
+    {
+      "id": 6,
+      "nome": "Ômega 3",
+      "valor_porcao": 15.00,
+      "categoria": "Complemento",
+      "imagem": "omega-3.webp"
+    },
+    {
+      "id": 7,
+      "nome": "Thermojetics",
+      "valor_porcao": 10.00,
+      "categoria": "Energético",
+      "imagem": "thermojetics.webp"
+    },
+    {
+      "id": 8,
+      "nome": "Aloe Vera",
+      "valor_porcao": 11.00,
+      "categoria": "Complemento",
+      "imagem": "aloe-vera.webp"
+    }
+  ]
+}
