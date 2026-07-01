@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Preços Herbalife 2026 – Edu Sidegum</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      padding: 20px 30px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #007A33;
+    }
+
+    header h1 {
+      color: #007A33;
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    thead th {
+      background-color: #007A33;
+      color: white;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      border: 1px solid #006025;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 10px 8px;
+      text-align: center;
+      border: 1px solid #ddd;
+      font-size: 0.9rem;
+    }
+
+    /* Zebra striping */
+    tbody tr:nth-child(even) {
+      background-color: #f2f9f4;
+    }
+
+    tbody tr:hover {
+      background-color: #e0f0e3;
+      cursor: default;
+    }
+
+    /* Categoria rows */
+    .categoria-row td {
+      background-color: #d4edda;
+      font-weight: bold;
+      color: #007A33;
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid #b1dfbb;
+      font-size: 1rem;
+    }
+
+    /* Responsive table */
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      thead th,
+      tbody td {
+        padding: 6px 4px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s;
+      z-index: 1000;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float span {
+      display: none;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+
+      .container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .whatsapp-float {
+        display: none;
+      }
+
+      thead th {
+        background-color: #eee !important;
+        color: black;
+        border: 1px solid #aaa;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f4f4f4 !important;
+      }
+
+      tbody td, thead th {
+        border: 1px solid #aaa;
+      }
+    }
+
+    footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .disclaimer {
+      font-style: italic;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tabela de Preços Herbalife 2026</h1>
+      <p><strong>Distribuidor Independente Herbalife: Edu Sidegum</strong> – Novo Hamburgo/RS</p>
+      <p style="font-size:0.85rem; margin-top:5px;">Atualizada em junho/2026. Preços em Reais (R$). Descontos aplicados conforme nível de associado.</p>
+    </header>
+
+    <main>
+      <table id="tabela-precos">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Pontos Volume</th>
+            <th>Custo/Porção (R$)</th>
+            <th>Preço DE (Catálogo)</th>
+            <th>Preço POR 14% (Bronze)</th>
+            <th>Preço POR 23% (Prata)</th>
+            <th>Preço POR 32% (Ouro)</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-body">
+          <!-- Preenchido via JavaScript -->
+        </tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p class="disclaimer">
+        <strong>DISCLAIMER:</strong> Os resultados apresentados variam de pessoa para pessoa, dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas. Os produtos Herbalife são suplementos alimentares e não medicamentos. Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional. <strong>Edu Sidegum</strong> – Distribuidor Independente Herbalife. Imagens meramente ilustrativas.
+      </p>
+      <p style="margin-top: 10px;">
+        © 2026 Edu Sidegum – Todos os direitos reservados.
+      </p>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/5551999663200?text=Ol%C3%A1%2C+Edu%21+Quero+saber+sobre+a+tabela+de+pre%C3%A7os+Herbalife." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.503-.515-.669-.524-.165-.009-.352-.01-.54-.01-.188 0-.496.072-.756.362-.26.29-1.004 1.016-1.004 2.477s1.038 2.874 1.183 3.074c.148.2 2.043 3.148 4.95 4.415 2.908 1.267 2.908.844 3.438.792.53-.053 1.707-.698 1.947-1.372.24-.674.24-1.252.168-1.372-.072-.12-.262-.198-.56-.347z"/>
+      <path fill="white" d="M12.002 2c-5.513 0-10 4.487-10 10 0 1.847.511 3.655 1.479 5.245l-1.563 1.563c-.25.25-.33.63-.197.96.133.33.46.55.81.55h.03l4.56-.87c1.49.95 3.22 1.45 4.98 1.45 5.513 0 10-4.487 10-10s-4.487-10-10-10zm0 18.21c-1.646 0-3.244-.47-4.626-1.355l-.282-.182-3.24.618.79-3.01-.195-.32C3.57 14.82 3.1 13.44 3.1 12c0-4.96 4.04-9 9-9s9 4.04 9 9-4.04 9-9 9z"/>
+    </svg>
+  </a>
+
+  <script>
+    // =========================================================
+    // DADOS DA TABELA (editar somente os números após deploy)
+    // =========================================================
+    const produtos = [
+      // Nutrição Interna
+      { categoria: "Nutrição Interna", nome: "Shake 1976g", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Shake 2080g", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Shake 550g", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Shake Sachê", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Nutri Soup", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "OnActive", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Beauty Booster", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Herbal Concentrate", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "Liftoff", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Interna", nome: "N-R-G", pontos: 0, precoDe: 0 },
+
+      // Fibras
+      { categoria: "Fibras", nome: "Fiber Powder", pontos: 0, precoDe: 0 },
+      { categoria: "Fibras", nome: "Fiber Concentrate", pontos: 0, precoDe: 0 },
+
+      // Lanches Saudáveis
+      { categoria: "Lanches Saudáveis", nome: "Barras de Proteína", pontos: 0, precoDe: 0 },
+      { categoria: "Lanches Saudáveis", nome: "Sopas Instantâneas", pontos: 0, precoDe: 0 },
+
+      // NutreV
+      { categoria: "NutreV", nome: "NutreV", pontos: 0, precoDe: 0 },
+
+      // Nutrição Complementar
+      { categoria: "Nutrição Complementar", nome: "Xtra-Cal", pontos: 0, precoDe: 0 },
+
+      // Nutrição Esportiva
+      { categoria: "Nutrição Esportiva", nome: "CR7 Drive", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Esportiva", nome: "Creatina", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Esportiva", nome: "Glutamina", pontos: 0, precoDe: 0 },
+      { categoria: "Nutrição Esportiva", nome: "BCAA", pontos: 0, precoDe: 0 },
+
+      // Proteínas
+      { categoria: "Proteínas", nome: "Whey Protein", pontos: 0, precoDe: 0 },
+      { categoria: "Proteínas", nome: "Proteína em pó", pontos: 0, precoDe: 0 },
+      { categoria: "Proteínas", nome: "Para preparo de sorvete", pontos: 0, precoDe: 0 },
+      { categoria: "Proteínas", nome: "Protein Crunch", pontos: 0, precoDe: 0 },
+      { categoria: "Proteínas", nome: "Tri-Core Protein", pontos: 0, precoDe: 0 },
+
+      // Tabletes
+      { categoria: "Tabletes", nome: "Herbalifeline", pontos: 0, precoDe: 0 },
+      { categoria: "Tabletes", nome: "Multivitaminas", pontos: 0, precoDe: 0 },
+      { categoria: "Tabletes", nome: "Shape Control", pontos: 0, precoDe: 0 },
+
+      // Cuidados Pessoais
+      { categoria: "Cuidados Pessoais", nome: "Cleanser Facial", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Gel Firmador", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Máscara Purificante", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Sérum Facial", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Chá Verde Creme", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Chá Verde Desodorante", pontos: 0, precoDe: 0 },
+      { categoria: "Cuidados Pessoais", nome: "Chá Verde Sabonete", pontos: 0, precoDe: 0 },
+
+      // Soft Green
+      { categoria: "Soft Green", nome: "Soft Green", pontos: 0, precoDe: 0 }
+    ];
+
+    // Função para formatar valores monetários
+    function formatarMoeda(valor) {
+      if (isNaN(valor) || valor === null || valor === undefined) return "N/A";
+      return "R$ " + valor.toFixed(2).replace('.', ',');
+    }
+
+    // Construir linhas da tabela
+    const tbody = document.getElementById("tabela-body");
+    let ultimaCategoria = "";
+
+    produtos.forEach(item => {
+      // Inserir linha de categoria se for diferente da última
+      if (item.categoria !== ultimaCategoria) {
+        const trCategoria = document.createElement("tr");
+        trCategoria.className = "categoria-row";
+        const tdCategoria = document.createElement("td");
+        tdCategoria.colSpan = 7;
+        tdCategoria.textContent = item.categoria;
+        trCategoria.appendChild(tdCategoria);
+        tbody.appendChild(trCategoria);
+        ultimaCategoria = item.categoria;
+      }
+
+      const tr = document.createElement("tr");
+
+      // Coluna Produto
+      const tdNome = document.createElement("td");
+      tdNome.textContent = item.nome;
+      tdNome.style.textAlign = "left";
+      tr.appendChild(tdNome);
+
+      // Pontos Volume
+      const tdPontos = document.createElement("td");
+      tdPontos.textContent = item.pontos;
+      tr.appendChild(tdPontos);
+
+      // Custo/Porção ( Préco DE / Pontos Volume )
+      const custoPorcao = (item.pontos > 0) ? item.precoDe / item.pontos : null;
+      const tdCusto = document.createElement("td");
+      tdCusto.textContent = formatarMoeda(custoPorcao);
+      tr.appendChild(tdCusto);
+
+      // Preço DE (Catálogo)
+      const tdPrecoDe = document.createElement("td");
+      tdPrecoDe.textContent = formatarMoeda(item.precoDe);
+      tr.appendChild(tdPrecoDe);
+
+      // Preço POR 14% (Bronze)
+      const preco14 = item.precoDe * 0.86;
+      const tdPor14 = document.createElement("td");
+      tdPor14.textContent = formatarMoeda(preco14);
+      tr.appendChild(tdPor14);
+
+      // Preço POR 23% (Prata)
+      const preco23 = item.precoDe * 0.77;
+      const tdPor23 = document.createElement("td");
+      tdPor23.textContent = formatarMoeda(preco23);
+      tr.appendChild(tdPor23);
+
+      // Preço POR 32% (Ouro)
+      const preco32 = item.precoDe * 0.68;
+      const tdPor32 = document.createElement("td");
+      tdPor32.textContent = formatarMoeda(preco32);
+      tr.appendChild(tdPor32);
+
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
