@@ -1,0 +1,259 @@
+/* =========================================
+   Protocolo de Bem-Estar — Estilos Modulares
+   Arquivo: styles.css
+   Otimizado para Core Web Vitals
+   ========================================= */
+
+/* ---------- Variáveis Globais ---------- */
+:root {
+  --garden-green: #007A33;
+  --text-dark: #333;
+  --bg-light: #f4f4f4;
+  --white: #ffffff;
+  --border-color: #ccc;
+  --focus-ring: rgba(0, 122, 51, 0.4);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --radius: 6px;
+  --transition: 0.2s ease-in-out;
+  --font-body: 'Open Sans', Arial, Helvetica, sans-serif;
+  --font-heading: 'Montserrat', 'Arial Black', sans-serif;
+}
+
+/* ---------- Reset Básico ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Previne zoom de fonte no mobile */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  line-height: 1.6;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+/* ---------- Tipografia ---------- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--garden-green);
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.4rem; }
+
+p {
+  margin-bottom: 1.2em;
+  color: var(--text-dark);
+}
+
+em { font-style: italic; }
+
+/* ---------- Layout: Article, Section, Form ---------- */
+article,
+section {
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---------- Componentes ---------- */
+
+/* Inputs e Select */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+  background: var(--white);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--garden-green);
+  border-color: var(--garden-green);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0.8em;
+}
+
+/* Botões */
+button,
+input[type="submit"],
+input[type="button"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--white);
+  background-color: var(--garden-green);
+  border: 2px solid var(--garden-green);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), transform var(--transition);
+  text-align: center;
+}
+
+/* ---------- Estados (Hover, Focus, Active) ---------- */
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #888;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--garden-green);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: #005a26; /* tom mais escuro do verde */
+  border-color: #005a26;
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  transform: scale(0.98);
+}
+
+/* Acessibilidade: focus-visible para usuários de teclado */
+*:focus-visible {
+  outline: 2px solid var(--garden-green);
+  outline-offset: 2px;
+}
+
+/* Remove outline para mouse, mantendo para teclado */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Contraste aumentado em elementos de texto */
+a {
+  color: var(--garden-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: #005a26;
+}
+
+/* ---------- Animações Suaves ---------- */
+/* Transições já aplicadas nos elementos interativos */
+img {
+  max-width: 100%;
+  height: auto;
+  /* Previne CLS: adicione aspect-ratio ou width/height no HTML */
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+  
+  article,
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  form {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+}
+
+/* ---------- Otimizações para Core Web Vitals ---------- */
+/* Evitar CLS: conteúdo oculto deve ter dimensões explícitas */
+.hidden-dimensions { 
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Minimizar TBT: evite animações pesadas, use will-change com moderação */
+.smooth-opacity {
+  will-change: opacity;
+  transition: opacity var(--transition);
+}
+
+/* LCP: priorizar fontes e recursos críticos (feito via preload no HTML) */
