@@ -1,0 +1,69 @@
+  # robots.txt para o Ecossistema Herbalife (edusidegum.github.io)
+# Este arquivo controla o rastreamento dos bots de busca.
+# Documentação: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+# -----------------------------------------------------------------------------
+# Crawlers principais — permitidos e com regras específicas
+# -----------------------------------------------------------------------------
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+
+# Páginas essenciais para indexação (permitidas explicitamente)
+Allow: /index.html
+Allow: /manifesto.html
+Allow: /protocolo.html
+Allow: /doc/politicadeprivacidade.html
+Allow: /doc/termosdeusodistribuidorindependenteherbalife.html
+
+# Bloqueio de áreas sensíveis e não públicas
+Disallow: /tabelas/
+Disallow: /config/
+Disallow: /*.json$
+Disallow: /admin/
+Disallow: /test/
+Disallow: /assets/js/
+Disallow: /menu/compartilhado/
+Disallow: /img/
+Disallow: /doc/admin/
+
+# Crawl-Delay: 2 segundos (Bingbot e outros respeitam; Googlebot ignora, mas não prejudica)
+Crawl-delay: 2
+
+# -----------------------------------------------------------------------------
+# Demais crawlers — mesmo tratamento (recomendado)
+# -----------------------------------------------------------------------------
+User-agent: *
+Allow: /index.html
+Allow: /manifesto.html
+Allow: /protocolo.html
+Allow: /doc/politicadeprivacidade.html
+Allow: /doc/termosdeusodistribuidorindependenteherbalife.html
+Disallow: /tabelas/
+Disallow: /config/
+Disallow: /*.json$
+Disallow: /admin/
+Disallow: /test/
+Disallow: /assets/js/
+Disallow: /menu/compartilhado/
+Disallow: /img/
+Disallow: /doc/admin/
+Crawl-delay: 2
+
+# -----------------------------------------------------------------------------
+# Bloqueio total de bots maliciosos e de SEO indesejados
+# -----------------------------------------------------------------------------
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# -----------------------------------------------------------------------------
+# Sitemap — localização do arquivo sitemap.xml
+# -----------------------------------------------------------------------------
+Sitemap: https://edusidegum.github.io/sitemap.xml
