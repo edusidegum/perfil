@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Sitemap do Ecossistema Herbalife -->
+  <!-- Data de geração: 01/07/2026 -->
+  <!-- Pronto para submissão no Google Search Console -->
+  <!-- Excluídas as URLs de: tabelas/*, config/*, admin/*, test/*, assets/*, menu/compartilhado/*, img/* -->
+  <!-- Máximo de 50000 URLs (este sitemap contém 6 URLs) -->
+  <url>
+    <loc>https://edusidegum.github.io/index.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <!-- Página principal do ecossistema -->
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/manifesto.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <!-- Manifesto do consultor -->
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/protocolo.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <!-- Página de protocolo -->
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/doc/politicadeprivacidade.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <!-- Política de Privacidade -->
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/doc/termosdeusodistribuidorindependenteherbalife.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <!-- Termos de Uso -->
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/links.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <!-- Agregador de links -->
+  </url>
+</urlset>
