@@ -706,8 +706,20 @@ img { max-width: 100%; }
           <input type="number" id="idade" placeholder="Idade" aria-label="Idade" min="1" max="120">
           <input type="number" id="peso" placeholder="Peso (kg)" aria-label="Peso em kg" step="0.1">
           <input type="number" id="altura" placeholder="Altura (m)" aria-label="Altura em metros" step="0.01">
-          <textarea class="full" id="objetivos" placeholder="Quais são seus objetivos pessoais? (ex: emagrecer, ganhar massa muscular, mais energia, melhorar a alimentação...)" aria-label="Objetivos pessoais"></textarea>
-          <div class="form-group">
+        <div class="form-group">
+  <label for="objetivo-pessoal">Quais são seus objetivos pessoais?</label>
+  <select id="objetivo-pessoal" name="objetivo-pessoal">
+    <option value="" selected disabled>Selecione seu objetivo principal</option>
+    <option value="reduzir-peso">1 — Reduzir peso</option>
+    <option value="ganhar-musculos">2 — Ganhar músculos</option>
+    <option value="manter-peso">3 — Manter seu peso para sempre</option>
+    <option value="vida-saudavel">4 — Ter uma vida mais saudável</option>
+    <option value="rendimento-esporte">5 — Rendimento no Esporte</option>
+  </select>
+  <small class="form-hint">Lembre-se: os especialistas recomendam reduzir no máximo 4 quilos ao mês.</small>
+</div>
+  
+        <div class="form-group">
   <label for="investimento">Quanto você está disposto a investir <strong>diariamente</strong> para melhorar o seu estilo de vida?</label>
   <select id="investimento" name="investimento">
     <option value="" selected disabled>Selecione um valor</option>
