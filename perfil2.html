@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Script de injeção compartilhado (defer = não bloqueante) -->
+  <script src="assets/js/bloco-incluir.js" defer></script>
+
+  <title>Avaliação de Perfil | Distribuidor Independente Herbalife</title>
+  <meta name="description" content="Faça sua avaliação de perfil e receba recomendações personalizadas de produtos Herbalife. Distribuidor Independente em Novo Hamburgo/RS.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Avaliação de Perfil | Distribuidor Independente Herbalife">
+  <meta property="og:description" content="Faça sua avaliação de perfil e receba recomendações personalizadas de produtos Herbalife. Distribuidor Independente em Novo Hamburgo/RS.">
+  <meta property="og:url" content="https://edusidegum.github.io/perfil/perfil.html">
+  <meta property="og:image" content="https://edusidegum.github.io/perfil/assets/img/logo-edusidegum.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Meta tags geográficas e de controle -->
+  <meta name="geo.region" content="BR-RS">
+  <meta name="geo.placename" content="Novo Hamburgo">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="protecao-copia" content="ativado">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://edusidegum.github.io/perfil/perfil.html">
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://edusidegum.github.io/#person",
+        "name": "Edu Sidegum",
+        "jobTitle": "Distribuidor Independente Herbalife",
+        "url": "https://edusidegum.github.io/",
+        "sameAs": ["https://wa.me/5551999663200"]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://edusidegum.github.io/#business",
+        "name": "Edu Sidegum — Consultoria Herbalife",
+        "description": "Consultoria nutricional e distribuição de produtos Herbalife em Novo Hamburgo/RS",
+        "url": "https://edusidegum.github.io/",
+        "telephone": "+5551999663200",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Novo Hamburgo",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "areaServed": ["BR"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+5551999663200",
+          "contactType": "customer service",
+          "availableLanguage": ["Portuguese"]
+        },
+        "founder": { "@id": "https://edusidegum.github.io/#person" }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://edusidegum.github.io/perfil/#product",
+        "name": "Avaliação de Perfil e Recomendação Personalizada",
+        "description": "Ferramenta de suporte técnico para consultoria nutricional com base em IMC e objetivos.",
+        "brand": { "@type": "Brand", "name": "Herbalife" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://edusidegum.github.io/#website",
+        "url": "https://edusidegum.github.io/",
+        "name": "Ecossistema Edu Sidegum — Herbalife",
+        "publisher": { "@id": "https://edusidegum.github.io/#person" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://edusidegum.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Avaliação de Perfil",
+            "item": "https://edusidegum.github.io/perfil/perfil.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS compartilhado -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Google Fonts com preconnect e carregamento assíncrono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Script de avaliação (defer) -->
+  <script src="assets/js/avaliacao.js" defer></script>
+
+  <!-- CSS Inline Adicional -->
+  <style>
+    /* Estilos específicos para a página de perfil */
+    .perfil-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .perfil-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #333;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Open Sans', sans-serif;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #78BE20;
+      outline: none;
+    }
+    .btn-calcular {
+      background: #78BE20;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 16px auto 0;
+    }
+    .btn-calcular:hover {
+      background: #6aad1c;
+      transform: scale(1.02);
+    }
+    .resultado-box {
+      margin-top: 16px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #78BE20;
+      font-size: 1.1rem;
+    }
+    .resultado-box p {
+      margin: 4px 0;
+    }
+    /* Tabela IMC */
+    .imc-tabela {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+    .imc-tabela th,
+    .imc-tabela td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .imc-tabela th {
+      background: #78BE20;
+      color: #fff;
+      font-weight: 700;
+    }
+    .imc-tabela .normal {
+      background: #d4edda;
+      color: #155724;
+    }
+    .imc-tabela .sobrepeso {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .imc-tabela .obesidade {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .imc-tabela .magreza {
+      background: #e2e3e5;
+      color: #383d41;
+    }
+    /* Botão imprimir */
+    .btn-imprimir-container {
+      text-align: center;
+      margin: 32px 0;
+    }
+    .btn-imprimir {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-imprimir:hover {
+      background: #555;
+    }
+    /* Aviso */
+    .aviso-consulta {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 24px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #856404;
+    }
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .perfil-section {
+        padding: 16px;
+      }
+      .btn-calcular {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .imc-tabela th,
+      .imc-tabela td {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header-spacer (compensa topbar fixa) -->
+  <div class="header-spacer"></div>
+
+  <main>
+    <article>
+      <header>
+        <h1>Avaliação de Perfil e Recomendação Personalizada</h1>
+        <p style="text-align:center; color:#666; max-width:600px; margin:0 auto 24px;">
+          Preencha os dados abaixo para receber uma recomendação inicial de produtos Herbalife alinhada ao seu objetivo.
+        </p>
+      </header>
+
+      <!-- Seção IMC -->
+      <section class="perfil-section" id="secao-imc">
+        <h2>Cálculo do IMC</h2>
+        <div class="form-group">
+          <label for="imc-peso">Peso (kg)</label>
+          <input type="number" id="imc-peso" placeholder="Ex: 70" step="0.1" min="20" max="300">
+        </div>
+        <div class="form-group">
+          <label for="imc-altura">Altura (m)</label>
+          <input type="number" id="imc-altura" placeholder="Ex: 1.75" step="0.01" min="0.5" max="2.5">
+        </div>
+        <button class="btn-calcular" id="btn-calcular-imc">Calcular IMC</button>
+        <div class="resultado-box" id="imc-resultado" style="display:none;"></div>
+        <div id="imc-tabela">
+          <table class="imc-tabela">
+            <thead>
+              <tr>
+                <th>Classificação</th>
+                <th>IMC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="magreza">
+                <td>Magreza</td>
+                <td>Abaixo de 18,5</td>
+              </tr>
+              <tr class="normal">
+                <td>Normal</td>
+                <td>18,5 — 24,9</td>
+              </tr>
+              <tr class="sobrepeso">
+                <td>Sobrepeso</td>
+                <td>25,0 — 29,9</td>
+              </tr>
+              <tr class="obesidade">
+                <td>Obesidade</td>
+                <td>30,0 ou mais</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Seção Recomendação -->
+      <section class="perfil-section" id="secao-recomendacao">
+        <h2>Recomendação Personalizada</h2>
+        <div class="form-group">
+          <label for="recomendacao-objetivo">Objetivo Principal</label>
+          <select id="recomendacao-objetivo">
+            <option value="1">Redução de peso</option>
+            <option value="2">Ganho de massa</option>
+            <option value="3">Manutenção</option>
+            <option value="4">Vida saudável</option>
+            <option value="5">Rendimento esportivo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="recomendacao-orcamento">Orçamento diário (R$)</label>
+          <input type="number" id="recomendacao-orcamento" placeholder="Ex: 20" step="0.5" min="0" max="500">
+        </div>
+        <button class="btn-calcular" id="btn-recomendar">Obter Recomendação</button>
+        <div class="resultado-box" id="recomendacao-resultado" style="display:none;"></div>
+      </section>
+
+      <!-- Container botão imprimir -->
+      <div class="btn-imprimir-container">
+        <button class="btn-imprimir" onclick="window.print()">🖨️ Imprimir Resultados</button>
+      </div>
+
+      <!-- Aviso -->
+      <div class="aviso-consulta">
+        ⚠️ Este sistema é uma ferramenta de suporte técnico para consultoria nutricional. Consulte um profissional de saúde.
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer padrão do ecossistema -->
+  <footer role="contentinfo">
+    <p><strong>Distribuidor Independente Herbalife: Edu Sidegum</strong></p>
+    <p>Novo Hamburgo/RS — Brasil</p>
+    <p>
+      <a href="https://catalogoherbalife.com.br/edusidegum" target="_blank" rel="noopener" style="color:#78BE20;font-weight:bold;text-decoration:none;border-bottom:2px solid rgba(120,190,32,0.4);padding-bottom:2px;">
+        📖 Acesse meu Catálogo Oficial de Produtos
+      </a>
+    </p>
+    <p>
+      <a href="https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305" target="_blank" rel="noopener" style="color:#78BE20;text-decoration:none;margin:0 8px;">
+        📝 Cadastre-se
+      </a>
+      <span>|</span>
+      <a href="https://wa.me/5551999663200" target="_blank" rel="noopener" style="color:#78BE20;text-decoration:none;margin:0 8px;">
+        💬 WhatsApp
+      </a>
+    </p>
+    <div style="max-width:650px;margin:10px auto 0;padding:12px 16px;border-top:1px solid #333;text-align:center;">
+      <p style="font-size:11px;color:#999;line-height:1.5;margin:0;">
+        <strong>DISCLAIMER:</strong> Os resultados apresentados variam de pessoa para pessoa, dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas. Os produtos Herbalife são suplementos alimentares e não medicamentos. Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional. <strong>Edu Sidegum</strong> — Distribuidor Independente Herbalife. Imagens meramente ilustrativas.
+      </p>
+    </div>
+    <div>
+      <a href="https://edusidegum.github.io/doc/politicadeprivacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+      <span>|</span>
+      <a href="https://edusidegum.github.io/doc/termosdeusodistribuidorindependenteherbalife.html" target="_blank" rel="noopener">Termos de Uso</a>
+      <span>|</span>
+      <a href="/">Página Inicial</a>
+    </div>
+    <p>© 2026 Edu Sidegum — Distribuidor Independente Herbalife. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
