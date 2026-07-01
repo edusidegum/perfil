@@ -707,8 +707,21 @@ img { max-width: 100%; }
           <input type="number" id="peso" placeholder="Peso (kg)" aria-label="Peso em kg" step="0.1">
           <input type="number" id="altura" placeholder="Altura (m)" aria-label="Altura em metros" step="0.01">
           <textarea class="full" id="objetivos" placeholder="Quais são seus objetivos pessoais? (ex: emagrecer, ganhar massa muscular, mais energia, melhorar a alimentação...)" aria-label="Objetivos pessoais"></textarea>
-          <input type="text" id="tempo-meta" placeholder="Em quanto tempo deseja atingir sua meta?" aria-label="Tempo para meta">
-          <input type="text" id="investimento" placeholder="Quanto investe ou investiria mensalmente em sua saúde?" aria-label="Investimento mensal em saúde">
+          <div class="form-group">
+  <label for="investimento">Quanto você está disposto a investir <strong>diariamente</strong> para melhorar o seu estilo de vida?</label>
+  <select id="investimento" name="investimento">
+    <option value="" selected disabled>Selecione um valor</option>
+    <option value="10">R$ 10,00 por dia</option>
+    <option value="15">R$ 15,00 por dia</option>
+    <option value="20">R$ 20,00 por dia</option>
+    <option value="25">R$ 25,00 por dia</option>
+    <option value="30">R$ 30,00 por dia</option>
+    <option value="35">R$ 35,00 por dia</option>
+    <option value="40">R$ 40,00 por dia</option>
+    <option value="45">R$ 45,00 por dia</option>
+    <option value="50">R$ 50,00 por dia</option>
+  </select>
+</div>
         </div>
       </section>
 
