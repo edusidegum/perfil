@@ -255,5 +255,12 @@ img {
   will-change: opacity;
   transition: opacity var(--transition);
 }
+.form-hint {
+  display: block;
+  margin-top: 6px;
+  font-size: .8rem;
+  color: var(--muted);
+  font-style: italic;
+}
 
 /* LCP: priorizar fontes e recursos críticos (feito via preload no HTML) */
