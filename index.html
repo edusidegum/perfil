@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Autoavaliação do Bem-Estar Herbalife. Diagnóstico nutricional com Carlos Silva em Novo Hamburgo/RS.">
+    <meta name="protecao-copia" content="ativado">
+    <title>Autoavaliação | Carlos Silva — HLF</title>
+    <link rel="stylesheet" href="../assets/css/style_verde.css">
+    <style>
+        .question-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); gap: 10px; }
+        .toggle-btn { padding: 6px 15px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-size: 0.8rem; }
+        .toggle-btn.active-sim { background: var(--garden); color: #fff; border-color: var(--garden); }
+        .toggle-btn.active-nao { background: #5a3a3a; color: #ffb3b3; border-color: #8b4444; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        input, select, textarea { background: #071A0E; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 8px; width: 100%; }
+        
+        /* Ampliação de 100% nos campos críticos */
+        .input-destaque { 
+            padding: 18px !important; 
+            font-size: 1.1rem !important; 
+            border: 2px solid var(--garden-light) !important; 
+            background: #0D3B1C !important;
+        }
+        
+        .results-card { background: var(--garden-dark); border-radius: 12px; padding: 25px; margin-top: 30px; border: 2px solid var(--garden-light); display: none; }
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1rem; }
+        .progress-bar { height: 10px; background: #1A3A24; border-radius: 5px; overflow: hidden; margin-bottom: 15px; }
+        .progress-fill { height: 100%; background: var(--garden-light); transition: width 0.5s; }
+    </style>
+</head>
+<body>
+    <div id="topbar-placeholder"></div>
+
+    <main class="container">
+        <section id="intro">
+            <h1>Autoavaliação do Bem-Estar</h1>
+            <p>Responda as perguntas abaixo para gerar seu diagnóstico de sistema.</p>
+        </section>
+
+        <!-- Bloco 1: Perguntas -->
+        <section class="card">
+            <h2>🍎 Hábitos e Estilo de Vida</h2>
+            <div id="perguntas-container">
+                <!-- As 22 perguntas entram aqui via repetição do padrão abaixo -->
+                <div class="question-row">
+                    <span>1. Consome frutas e vegetais diariamente?</span>
+                    <div class="toggle-group" data-group="ali" data-idx="0">
+                        <button class="toggle-btn" onclick="setVal(this, 'sim')">Sim</button>
+                        <button class="toggle-btn" onclick="setVal(this, 'nao')">Não</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloco 2: Seus Dados (Agora antes dos resultados) -->
+        <section class="card">
+            <h2>📋 Seus Dados</h2>
+            <div class="form-grid">
+                <input type="text" id="nome" placeholder="Nome Completo">
+                <input type="tel" id="whatsapp" placeholder="WhatsApp">
+                
+                <div style="grid-column: 1 / -1;">
+                    <label style="display:block; margin-bottom:8px; font-weight:bold;">Qual seu objetivo principal?</label>
+                    <select id="objetivo" class="input-destaque">
+                        <option disabled selected>Selecione seu objetivo</option>
+                        <option>Reduzir Peso</option>
+                        <option>Ganhar Músculos</option>
+                        <option>Energia e Performance</option>
+                        <option>Longevidade e Saúde</option>
+                    </select>
+                </div>
+
+                <div style="grid-column: 1 / -1;">
+                    <label style="display:block; margin-bottom:8px; font-weight:bold;">Quanto deseja investir diariamente no seu novo estilo de vida?</label>
+                    <select id="investimento" class="input-destaque">
+                        <option disabled selected>Selecione um valor médio</option>
+                        <option>R$ 15,00/dia</option>
+                        <option>R$ 25,00/dia</option>
+                        <option>R$ 40,00+/dia</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloco 3: Seus Resultados (Posição Corrigida) -->
+        <section id="meus-resultados" class="results-card">
+            <h3>📊 Seu Diagnóstico Atual</h3>
+            <div class="result-row"><span>🍎 Alimentação</span><span id="txt-ali">0 / 10</span></div>
+            <div class="progress-bar"><div id="bar-ali" class="progress-fill" style="width: 0%"></div></div>
+            <div class="result-row"><span>🏃 Estilo de Vida</span><span id="txt-est">0 / 7</span></div>
+            <div class="progress-bar"><div id="bar-est" class="progress-fill" style="width: 0%"></div></div>
+            <div class="result-row"><span>⚖️ Controle de Peso</span><span id="txt-pes">0 / 5</span></div>
+            <div class="progress-bar"><div id="bar-pes" class="progress-fill" style="width: 0%"></div></div>
+        </section>
+
+        <div style="text-align: center; margin-top: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <button class="btn-primary-whats" style="width: 100%; max-width: 400px;" onclick="mostrarResultados()">🔍 Ver Resultado</button>
+            <button class="btn-secondary" style="width: 100%; max-width: 400px; border-color: #25D366; color: #25D366;" onclick="enviarWhatsApp()">📲 Enviar Resumo ao Consultor</button>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        let scores = { ali: new Array(10).fill(null), est: new Array(7).fill(null), pes: new Array(5).fill(null) };
+        function setVal(btn, val) {
+            const group = btn.parentElement;
+            const g = group.dataset.group;
+            const i = group.dataset.idx;
+            scores[g][i] = val;
+            group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active-sim', 'active-nao'));
+            btn.classList.add(val === 'sim' ? 'active-sim' : 'active-nao');
+        }
+        function mostrarResultados() {
+            ['ali', 'est', 'pes'].forEach(g => {
+                const count = scores[g].filter(v => v === 'sim').length;
+                const total = scores[g].length;
+                document.getElementById(`txt-${g}`).textContent = `${count} / ${total}`;
+                document.getElementById(`bar-${g}`).style.width = `${(count/total)*100}%`;
+            });
+            document.getElementById('meus-resultados').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('meus-resultados').offsetTop - 100, behavior: 'smooth' });
+        }
+        function enviarWhatsApp() {
+            const nome = document.getElementById('nome').value || 'Cliente';
+            const obj = document.getElementById('objetivo').value;
+            const msg = `Olá Carlos! Sou ${nome}. Finalizei minha autoavaliação.\nObjetivo: ${obj}\nResultados:\n- Ali: ${document.getElementById('txt-ali').textContent}\n- Est: ${document.getElementById('txt-est').textContent}\n- Peso: ${document.getElementById('txt-pes').textContent}`;
+            window.open(`https://wa.me/5551999663200?text=${encodeURIComponent(msg)}`);
+        }
+    </script>
+    <script src="../assets/js/bloco-incluir.js" defer></script>
+    <script src="../assets/js/bloco-protecao.js" defer></script>
+</body>
+</html>
